@@ -17,7 +17,7 @@ class SecurityController extends AbstractController
     {
 
         if($this->isGranted('ROLE_USER') === true){
-            return $this->redirectToRoute('item_index');
+            return $this->redirectToRoute('weapon_index');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();

@@ -62,6 +62,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\WeaponUser", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $weaponUser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -225,5 +230,27 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getWeaponUser(): ?WeaponUser
+    {
+        return $this->weaponUser;
+    }
+
+    public function setWeaponUser($weaponUser): self
+    {
+        $this->weaponUser = $weaponUser;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $weaponUser->getUser()) {
+            $weaponUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getUsername();
+        // TODO: Implement __toString() method.
+    }
 
 }
