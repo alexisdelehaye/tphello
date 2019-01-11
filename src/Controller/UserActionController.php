@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\WeaponUser;
+use App\Service\User\HealUser;
 use App\Service\WeaponUser\LoadWeapon;
 use App\Service\WeaponUser\ReloadWeapon;
 use App\Service\WeaponUser\ShootWeapon;
@@ -64,4 +65,36 @@ class UserActionController extends AbstractController
         return $this->redirectToRoute('user_action_index');
     }
 
+    /**
+     * @Route("/ranger/{id}", name="user_action_ranger", methods="GET")
+     */
+    public function ranger(WeaponUser $weaponUser, LoadWeapon $loadWeapon){
+
+     $loadWeapon->ranger($weaponUser);
+
+        return $this->redirectToRoute('user_action_index');
+
+    }
+
+
+    /**
+     * @Route("/heal/{id}", name="user_action_heal", methods="GET")
+     */
+    public function heal(User $user, HealUser $healUser){
+
+        $healUser->heal($user);
+
+        return $this->redirectToRoute('user_action_index');
+
+    }
+
+    /**
+     * @Route("/emptyShoot/{id}", name="user_action_somation", methods="GET")
+     */
+    public function emptyShoot(WeaponUser $weaponUser, ShootWeapon $shootWeapon){
+
+        $shootWeapon->emptyShoot($weaponUser);
+        return $this->redirectToRoute('user_action_index');
+
+    }
 }

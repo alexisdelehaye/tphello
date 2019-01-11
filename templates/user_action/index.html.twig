@@ -11,10 +11,15 @@
     <div class="panel">
         {% for weaponUser in weaponsUser %}
             {% set damage = weaponUser.quality *  weaponUser.weapon.damage %}
-            <h2 {% if weaponUser.active is same as(true) %} class="active" {% endif %}>Name
-                : {{ weaponUser.weapon.name }} - Ammu : {{ weaponUser.ammunition }} - DMG :{{ damage }} <a
-                        href="{{ path('user_action_load', {'id': weaponUser.id}) }}">Load</a><a
-                        href="{{ path('user_action_reload', {'id': weaponUser.id}) }}">Reload</a></h2>
+            <h2  class="active">Name
+                : {{ weaponUser.weapon.name }} - Ammu : {{ weaponUser.ammunition }} - DMG :{{ damage }}
+                <a href="{{ path('user_action_load', {'id': weaponUser.id}) }}">Load</a>
+                {% if weaponUser.active is same as(true) %}
+                <a href="{{ path('user_action_reload', {'id': weaponUser.id}) }}">Reload</a>
+                <a href="{{ path('user_action_ranger', {'id': weaponUser.id}) }}">Ranger Arme</a>
+                <a href="{{ path('user_action_somation', {'id': weaponUser.id}) }}">tir de sommation</a>
+                {% endif %}
+            </h2>
         {% endfor %}
     </div>
 
@@ -23,7 +28,9 @@
         {% for user in users %}
             <h2 {% if user.health is same as(constant('App\\Entity\\User::HEALT')) %} class="active" {% endif %}>Name
                 : {{ user.email }} - <span class="point">{{ user.health }}PV</span><a
-                        href="{{ path('user_action_shoot', {'id': user.id}) }}">Shoot</a></h2>
+                        href="{{ path('user_action_shoot', {'id': user.id}) }}">Shoot</a>
+                <a href="{{ path('user_action_heal', {'id': user.id}) }}">Heal</a>
+            </h2>
         {% endfor %}
     </div>
 

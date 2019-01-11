@@ -33,5 +33,13 @@ class LoadWeapon
         $this->session->getFlashBag()->add('success', $weaponUser->getWeapon()->getName() . ' is loaded ! beware of the bang bang');
         $this->em->flush();
     }
+
+
+    public function ranger(WeaponUser $weaponuser)
+    {
+        $weaponuser->setActive(false);
+        $this->session->getFlashBag()->add('success', $weaponuser->getWeapon()->getName() . ' à été rangée');
+        $this->em->flush();
+    }
 }
 
