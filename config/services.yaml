@@ -44,3 +44,8 @@ services:
     App\EventListener\LoginListener:
         tags:
             - { name: kernel.event_listener, event: user.create, priority: 0 }
+    App\EventListener\ActionUserListener:
+        tags:
+            - { name: kernel.event_listener, event: actionUser.create, method: 'deplacement', priority: 128 } #plus la priorité est élevé plus il répond vite
+            - { name: kernel.event_listener, event: actionUser.create, method: 'sauvegardeActionUser', priority: 120 }
+            - { name: kernel.event_listener, event: actionUser.create, method: 'onActionUserCreate', priority: 110   }
