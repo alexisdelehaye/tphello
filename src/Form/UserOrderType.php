@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\UserOrder;
+use App\Form\Type\UserOrderDiscountType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +15,7 @@ class UserOrderType extends AbstractType
         $builder
             ->add('createdAt')
             ->add('price')
-            ->add('discount')
+            ->add('discount', UserOrderDiscountType::class)
             ->add('reference')
         ;
     }
