@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as CustomAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ *  @CustomAssert\ProductQuantity
  */
 class Product
 {
@@ -35,6 +37,7 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * @CustomAssert\ProductQuantity
      */
     private $quantity;
 
