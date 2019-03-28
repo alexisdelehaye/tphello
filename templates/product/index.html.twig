@@ -37,6 +37,10 @@
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
+
+        {% if Acheter == false %}
+        <td><a href="#">Acheter</a></td>
+        {% endif %}
         </tbody>
     </table>
 
