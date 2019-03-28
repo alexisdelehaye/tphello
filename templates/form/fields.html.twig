@@ -9,3 +9,31 @@
     {{- block('form_widget') -}}
 
 {% endblock roles_widget %}
+
+{% block userorderdiscount_widget %}
+
+    {{- block('form') -}}
+
+    <div id="color-quality">
+        Ma belle couleur
+    </div>
+
+    <script>
+        function changeColor(value){
+            console.log(value);
+            let color = '#FFFFFF';
+            switch(value){
+                case "5": color = 'orange';
+                    break;
+                case "3": color = 'purple';
+                    break;
+                case "2": color = 'blue';
+                    break;
+                case "-1": color = 'grey';
+                    break;
+            }
+            document.getElementById('user_order_discount').style.backgroundColor = "red";
+        }
+    </script>
+
+{% endblock userorderdiscount_widget %}

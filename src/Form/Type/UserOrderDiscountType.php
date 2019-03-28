@@ -21,6 +21,7 @@ class UserOrderDiscountType extends AbstractType
             ],
             'multiple' => false,
             'expanded' => true,
+            'attr' => ['onChange' => 'changeColor(this.value)']
         ]);
 
     }
